@@ -7,9 +7,9 @@ module.exports = gql`
 
 # Global Query
   extend type Query {
-
         getUsers : [User]!
         getUser(_id : ID!) : User!
+        login(email : String!, password : String!) : User!
 
     }
 
@@ -25,6 +25,7 @@ module.exports = gql`
 
         name : String!
         email : String!
+        password : String!
         _id : ID!
         
     }
@@ -33,6 +34,7 @@ module.exports = gql`
     input UserInput {
         name : String!
         email : String!
+        password : String!
     }
 
 

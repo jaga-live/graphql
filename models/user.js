@@ -7,6 +7,9 @@ name : String,
 
 email : String,
 
+password : String,
+
+jwt : Array
 
 })
 

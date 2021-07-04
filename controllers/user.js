@@ -1,22 +1,40 @@
-const User = require("../models/user")
 const {UserInputError} = require("apollo-server")
+const {config} = require("dotenv")
+config()
+
+const User = require("../models/user")
+
+const {hashSync} = require("bcrypt")
+const {sign} = require("jsonwebtoken")
+const jwtSecret = process.env.JWT_SECRET
 
 //////Add a new User
 const add_user = async(data)=>{
     try {
-        const {name, email} = data.userInput
-
+        const {name, email, password} = data.userInput
+        var id
         var checkUser = await User.countDocuments({email})
         if(checkUser !==0 )  return new Error("Username exists!")
 
+        
         await User.insertMany({
             name,
-            email
+            email,
+            password : hashSync(password, 12),
+        }).then(res=>{
+             id = res[0]._id
+        })
+
+        var token = sign({_id : id, type : "user"},jwtSecret)
+
+        await User.updateOne({_id : id},{
+            $push : {jwt : token}
         })
 
         return "User Created"
+
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
