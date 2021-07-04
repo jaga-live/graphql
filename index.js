@@ -5,7 +5,7 @@ require("./database/mongoose")
 
 
 //////Importing Resolvers and Schema
-const typeDefs = require("./schema/user")
+const typeDefs = require("./schema")
 const resolvers = require("./resolvers/index")
 
 

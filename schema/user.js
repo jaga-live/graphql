@@ -18,6 +18,15 @@ module.exports = gql`
         
     }
 
+    input UserInput {
+        name : String!
+        email : String!
+    }
+
+    type Mutation {
+        addUser(userInput : UserInput) : User
+    }
+
 
 
 `
