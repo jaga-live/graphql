@@ -5,7 +5,7 @@ const gql = require("graphql-tag")
 
 module.exports = gql`
 
-    type Query {
+  extend type Query {
 
         getUsers : [User]!
 
@@ -23,7 +23,7 @@ module.exports = gql`
         email : String!
     }
 
-    type Mutation {
+   extend type Mutation {
         addUser(userInput : UserInput) : User
     }
 

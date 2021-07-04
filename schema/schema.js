@@ -6,11 +6,11 @@ var docSchema = require("./document")
 
 const schema = gql`
 
-extend type Query {
+ type Query {
     _empty : String
 }
 
-extend type Mutation {
+ type Mutation {
     _empty : String
 }
 
