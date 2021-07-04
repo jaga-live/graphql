@@ -1,9 +1,10 @@
-const {add_user, view_users} = require("../controllers/user")
+const {add_user, view_users, view_user} = require("../controllers/user")
 
 
 module.exports = {
     Query : {
-        getUsers : ()=> view_users()
+        getUsers : ()=> view_users(),
+        getUser : (_,args,context,info)=> view_user(args)
     },
 
     Mutation : {

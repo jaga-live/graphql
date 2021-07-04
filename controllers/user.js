@@ -14,15 +14,28 @@ const add_user = async(data)=>{
             email
         })
 
-        return {
-            name : "Jaga",
-            email : "jaga@gmail.com"
-        }
+        return "User Created"
     } catch (error) {
         
     }
 }
 
+
+const view_user = async(data)=>{
+    try {
+        const {_id} = data
+
+        var user = await User.findOne({_id})
+
+        return user
+
+        
+    } catch (error) {
+        console.log(error)
+        return new UserInputError("Error")
+        
+    }
+}
 
 //////View User 
 const view_users = async()=>{
@@ -49,5 +62,6 @@ const view_users = async()=>{
 
 module.exports = {
     add_user,
-    view_users
+    view_users,
+    view_user
 }
