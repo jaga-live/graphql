@@ -15,7 +15,7 @@ module.exports = gql`
 
 # Mutation
    extend type Mutation {
-        addUser(userInput : UserInput) : String
+        addUser(userInput : UserInput) : User!
     }
 
 

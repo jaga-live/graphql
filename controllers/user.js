@@ -36,7 +36,10 @@ const add_user = async(data)=>{
             $push : {jwt : token}
         })
 
-        return "User Created"
+        return {
+            token,
+            type : "user"
+        }
 
     } catch (error) {
         console.log(error)
