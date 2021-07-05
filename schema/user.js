@@ -27,6 +27,7 @@ module.exports = gql`
         email : String!
         password : String!
         _id : ID!
+        token : String!
         
     }
 
