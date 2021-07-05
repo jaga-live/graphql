@@ -1,3 +1,4 @@
+const cors = require("cors")
 const {ApolloServer} = require("apollo-server")
 
 //////MongoDB
@@ -10,6 +11,10 @@ const resolvers = require("./resolvers/index")
 
 
 const server = new ApolloServer({
+    cors: {
+		origin: '*',		
+		credentials: true
+    },
     typeDefs,
     resolvers,
     context : ({ req }) => ({ req })
