@@ -28,6 +28,7 @@ module.exports = gql`
         password : String!
         _id : ID!
         token : String!
+        type : String!
         
     }
 
