@@ -1,5 +1,10 @@
 const cors = require("cors")
-const {ApolloServer} = require("apollo-server")
+const express = require("express")
+const {createServer} = require("http")
+const {ApolloServer} = require("apollo-server-express")
+const app = express()
+app.use(cors())
+
 
 //////MongoDB
 require("./database/mongoose")
@@ -11,16 +16,16 @@ const resolvers = require("./resolvers/index")
 
 
 const server = new ApolloServer({
-    cors: {
-		origin: '*',		
-		credentials: true
-    },
     typeDefs,
     resolvers,
     context : ({ req }) => ({ req })
 })
 
+server.applyMiddleware({ app, path: '/graphql' });
 
-server.listen({port : 5000},()=>{
-    console.log("Server is running! 😸")
-})
+const httpServer = createServer(app);
+
+httpServer.listen({ port: 5000 }, () => {
+    console.log(`server ready at http://localhost:${5000}${server.graphqlPath}`);
+
+  });

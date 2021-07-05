@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jagadheesh6/graphql#readme",
   "dependencies": {
     "apollo-server": "^2.25.2",
+    "apollo-server-express": "^2.25.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
