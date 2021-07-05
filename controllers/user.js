@@ -1,12 +1,17 @@
-const {UserInputError} = require("apollo-server")
+const {UserInputError, AuthenticationError} = require("apollo-server")
 const {config} = require("dotenv")
 config()
 
-const User = require("../models/user")
 
 const {hashSync} = require("bcrypt")
 const {sign} = require("jsonwebtoken")
 const jwtSecret = process.env.JWT_SECRET
+
+
+
+const User = require("../models/user")
+
+const verifyAuth = require("../auth/verify.auth")
 
 //////Add a new User
 const add_user = async(data)=>{
@@ -42,6 +47,7 @@ const add_user = async(data)=>{
 const view_user = async(data)=>{
     try {
         const {_id} = data
+        
 
         var user = await User.findOne({_id})
 
@@ -56,9 +62,10 @@ const view_user = async(data)=>{
 }
 
 //////View User 
-const view_users = async()=>{
+const view_users = async(context)=>{
     try {
-
+        console.log(context)
+          
         return [
             {
                 name : "Jaga",
@@ -71,8 +78,8 @@ const view_users = async()=>{
         ]
         
     } catch (error) {
-
-        throw new Error("Something Went Wrong")
+        // console.log(error)
+        return new Error("Something Went Wrong")
         
     }
 }

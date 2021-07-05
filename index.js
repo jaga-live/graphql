@@ -11,7 +11,8 @@ const resolvers = require("./resolvers/index")
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context : ({ req }) => ({ req })
 })
 
 

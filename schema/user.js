@@ -8,8 +8,8 @@ module.exports = gql`
 # Global Query
   extend type Query {
         getUsers : [User]!
-        getUser(_id : ID!) : User!
-        login(email : String!, password : String!) : User!
+        getUser : User!
+        
 
     }
 

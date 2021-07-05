@@ -1,8 +1,9 @@
 const {login} = require("../auth/auth")
 
-const userResolver = require("../resolvers/user")
+const authResolver = require("./auth")
+const userResolver = require("./user")
 
-module.exports = {
 
-    ...userResolver
-}
+module.exports =
+    [authResolver,
+    userResolver]

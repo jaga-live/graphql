@@ -7,7 +7,7 @@ var docSchema = require("./document")
 const schema = gql`
 
  type Query {
-    _empty : User
+    login(email : String!, password : String!) : User!
 }
 
  type Mutation {

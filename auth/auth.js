@@ -2,8 +2,7 @@ const {UserInputError} = require("apollo-server")
 const {compareSync} = require("bcrypt")
 const {sign} = require("jsonwebtoken")
 
-const {config} = require("dotenv")
-config()
+require('dotenv').config()
 const jwtSecret = process.env.JWT_SECRET
 
 const User = require("../models/user")
@@ -12,6 +11,7 @@ const User = require("../models/user")
 
 const login = async(data)=>{
     try {
+        
         const {email, password} = data
         var user = await User.findOne({email})
         
